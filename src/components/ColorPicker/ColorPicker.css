@@ -1,0 +1,34 @@
+.ColorPicker {
+  width: 400px;
+  height: 200px;
+  border: 1px solid;
+  padding: 5px;
+}
+
+.ColorPicker__container {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.ColorPicker__title {
+  text-align: center;
+}
+
+.ColorPicker__option {
+  width: 30px;
+  height: 30px;
+  border: none;
+  cursor: pointer;
+
+  box-shadow: rgb(0 0 0 / 30%) 0px 0.5rem 1rem;
+  transition: transform 250ms linear;
+}
+
+.ColorPicker__option:hover {
+  transform: translateY(5%) scale(1.3);
+}
+
+.ColorPicker__option--active {
+  transform: scale(1.2);
+  border: 2px solid #0a8efa;
+}
