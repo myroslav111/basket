@@ -1,0 +1,36 @@
+@import '../../components/styles/share.scss';
+
+.TodoList {
+  // width: 500px;
+  @extend %list;
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  grid-gap: 24px;
+}
+
+.TodoList__item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  border: 1px solid black;
+  border-radius: 4px;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+
+    background-color: green;
+  }
+}
+
+.TodoList__text {
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-right: 10px;
+}
