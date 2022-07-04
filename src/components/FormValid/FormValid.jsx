@@ -1,5 +1,5 @@
 // import React from 'react';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { Formik, Form, ErrorMessage } from 'formik';
 import { Input } from './FormValid.styled';
 import * as yup from 'yup';
 
@@ -18,6 +18,7 @@ const LoginForm = () => {
 
   const handleSubmit = (values, { resetForm }) => {
     console.log(values);
+    console.log(resetForm);
     console.log(resetForm);
     resetForm();
   };
