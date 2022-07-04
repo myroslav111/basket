@@ -1,31 +1,32 @@
 import React, { Component } from 'react';
-// todo
-// import TodoList from 'components/TodoList';
+
+import TodoList from 'components/TodoList';
 import initialTodos from './components/TodoList/todos';
-// import TodoEditor from 'components/TodoEditor';
-// import TodoFilter from 'components/TodoFilter';
+import TodoEditor from 'components/TodoEditor';
+import TodoFilter from 'components/TodoFilter';
 // другое
-// import FormValid from 'components/FormValid';
+import FormValid from 'components/FormValid';
 import ProductReviewForm from 'components/ProductReviewForm';
-// import Counter from 'components/Counter';
-// import Dropdown from 'components/Dropdown';
-// import ColorPicker from 'components/ColorPicker';
+import Counter from 'components/Counter';
+import Dropdown from 'components/Dropdown';
+import ColorPicker from 'components/ColorPicker';
 // import { render } from '@testing-library/react';
-// import Form from 'components/Form';
+import Form from 'components/Form';
 // import classNames from 'classnames';
 import { nanoid } from 'nanoid';
 import './App.scss';
 
-// const colorPickerOptions = [
-//   { label: 'red', color: '#f5050d' },
-//   { label: 'black', color: 'black' },
-//   { label: 'tomato', color: 'tomato' },
-//   { label: 'blue', color: 'blue' },
-//   { label: 'green', color: 'green' },
-//   { label: 'orange', color: 'orange' },
-// ];
+const colorPickerOptions = [
+  { label: 'red', color: '#f5050d' },
+  { label: 'black', color: 'black' },
+  { label: 'tomato', color: 'tomato' },
+  { label: 'blue', color: 'blue' },
+  { label: 'green', color: 'green' },
+  { label: 'orange', color: 'orange' },
+];
 
 class App extends Component {
+  /* */
   state = {
     todos: initialTodos,
     filter: '',
@@ -54,19 +55,6 @@ class App extends Component {
 
   toggleCompleted = todoId => {
     console.log(todoId);
-    // this.setState(prevState => ({
-    //   todos: prevState.todos.map(todo => {
-    //     if (todo.id === todoId) {
-    //       console.log('got todo');
-    //       return {
-    //         ...todo,
-    //         completed: !todo.completed,
-    //       };
-    //     }
-
-    //     return todo;
-    //   }),
-    // }));
 
     this.setState(({ todos }) => ({
       todos: todos.map(todo =>
@@ -103,26 +91,42 @@ class App extends Component {
     const visibleTodos = this.getVisibleTodo();
     return (
       <div className="MainContainer">
-        {/* <Form onSubmit={this.formSabmitHandler} /> */}
-        {/* <h1>component state</h1> */}
-        {/* <Counter intialValue={10} /> */}
-        {/* <Dropdown /> */}
-        {/* <ColorPicker options={colorPickerOptions} /> */}
-        {/* <FormValid/> */}
+        <Form onSubmit={this.formSabmitHandler} />
+        <br />
+        <br /> <br />
+        <h1>component state</h1>
+        <Counter intialValue={10} />
+        <br />
+        <br />
+        <br />
+        <Dropdown />
+        <br />
+        <br />
+        <br />
+        <ColorPicker options={colorPickerOptions} />
+        <br />
+        <br />
+        <br />
+        <FormValid />
+        <br />
+        <br />
+        <br />
         <ProductReviewForm />
+        <br />
+        <br />
+        <br />
         {/* --------------------todo------------------------------------ */}
-        {/* <div>
+        <div>
           <p>Total todo: {todos.length}</p>
           <p>Number of completed: {completedTodo}</p>
         </div>
         <TodoEditor onSubmit={this.addTodo} />
         <TodoFilter value={filter} onChange={this.changeFilter} />
         <TodoList
-          // todos={todos}
           todos={visibleTodos}
           onDeleteTodo={this.deleteTodo}
           onToggleCompleted={this.toggleCompleted}
-        /> */}
+        />
         {/* ----------------------------------------------- */}
       </div>
     );
