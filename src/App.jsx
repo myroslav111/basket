@@ -1,15 +1,19 @@
+import React, { Component } from 'react';
+// todo
+// import TodoList from 'components/TodoList';
+import initialTodos from './components/TodoList/todos';
+// import TodoEditor from 'components/TodoEditor';
+// import TodoFilter from 'components/TodoFilter';
+// другое
+// import FormValid from 'components/FormValid';
+import ProductReviewForm from 'components/ProductReviewForm';
 // import Counter from 'components/Counter';
 // import Dropdown from 'components/Dropdown';
 // import ColorPicker from 'components/ColorPicker';
-import React, { Component } from 'react';
-import TodoList from 'components/TodoList';
 // import { render } from '@testing-library/react';
-import initialTodos from './components/TodoList/todos';
-import TodoEditor from 'components/TodoEditor';
 // import Form from 'components/Form';
 // import classNames from 'classnames';
 import { nanoid } from 'nanoid';
-import TodoFilter from 'components/TodoFilter';
 import './App.scss';
 
 // const colorPickerOptions = [
@@ -104,8 +108,10 @@ class App extends Component {
         {/* <Counter intialValue={10} /> */}
         {/* <Dropdown /> */}
         {/* <ColorPicker options={colorPickerOptions} /> */}
-
-        <div>
+        {/* <FormValid/> */}
+        <ProductReviewForm />
+        {/* --------------------todo------------------------------------ */}
+        {/* <div>
           <p>Total todo: {todos.length}</p>
           <p>Number of completed: {completedTodo}</p>
         </div>
@@ -116,7 +122,8 @@ class App extends Component {
           todos={visibleTodos}
           onDeleteTodo={this.deleteTodo}
           onToggleCompleted={this.toggleCompleted}
-        />
+        /> */}
+        {/* ----------------------------------------------- */}
       </div>
     );
   }
