@@ -44,6 +44,7 @@ const initialValues = {
 class ProductReviewForm extends Component {
   handleSubmit = (values, { resetForm }) => {
     console.log(values);
+    console.log(resetForm);
     resetForm();
   };
 
