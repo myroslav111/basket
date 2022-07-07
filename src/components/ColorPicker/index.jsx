@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './ColorPicker.css';
+import { ReactComponent as AddIcon } from '../../icons/hand.svg';
 
 class ColorPicker extends Component {
   state = {
@@ -34,7 +35,9 @@ class ColorPicker extends Component {
               className={this.makeOptionClassName(index)}
               style={{ backgroundColor: color }}
               onClick={() => this.setActiveIdx(index)}
-            ></button>
+            >
+              <AddIcon />
+            </button>
           ))}
         </div>
       </div>

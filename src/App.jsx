@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import TodoList from 'components/TodoList';
-import initialTodos from './components/TodoList/todos';
+// import initialTodos from './components/TodoList/todos';
 import TodoEditor from 'components/TodoEditor';
 import TodoFilter from 'components/TodoFilter';
 // другое
@@ -10,12 +10,16 @@ import ProductReviewForm from 'components/ProductReviewForm';
 import Counter from 'components/Counter';
 import Dropdown from 'components/Dropdown';
 import ColorPicker from 'components/ColorPicker';
-// import { render } from '@testing-library/react';
+// import { ReactComponent as AddIcon } from './icons/hand.svg';
+import Modal from 'components/Modal';
+import Tab from 'components/Tab';
+import tabjson from './components/Tab/tabs.json';
+// import Clock from 'components/Clock';
 import Form from 'components/Form';
 // import classNames from 'classnames';
 import { nanoid } from 'nanoid';
 import './App.scss';
-
+// import { render } from '@testing-library/react';
 const colorPickerOptions = [
   { label: 'red', color: '#f5050d' },
   { label: 'black', color: 'black' },
@@ -28,13 +32,19 @@ const colorPickerOptions = [
 class App extends Component {
   /* */
   state = {
-    todos: initialTodos,
+    todos: [],
     filter: '',
+    // for modal
+    showModal: false,
+  };
+
+  toggleModal = () => {
+    this.setState(({ showModal }) => ({
+      showModal: !showModal,
+    }));
   };
 
   addTodo = text => {
-    console.log(text);
-
     const todo = {
       id: nanoid(),
       // когда имя свойства и значения = тогда достаточно имя свойства
@@ -84,13 +94,36 @@ class App extends Component {
 
     return todos.reduce((acc, todo) => (todo.completed ? acc + 1 : acc), 0);
   };
+  // вызывается один раз при маунте(монтирование) компонента удобно брать начальные данные
+  componentDidMount() {
+    const todos = localStorage.getItem('todos');
+    const parsedTodos = JSON.parse(todos);
+    if (parsedTodos) {
+      this.setState({ todos: parsedTodos });
+    }
+  }
+  // вызывается после каждого обновления
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    // console.log(prevProps);
+    // console.log(prevState);
+    // console.log(this.state);
+    // обезательно проверить обновилось ли стейт иначе зациклим
+    if (prevState.todos !== this.state.todos) {
+      localStorage.setItem('todos', JSON.stringify(this.state.todos));
+    }
+  }
 
   render() {
-    const { todos, filter } = this.state;
+    const { todos, filter, showModal } = this.state;
     const completedTodo = this.getComplitedTodoCount();
     const visibleTodos = this.getVisibleTodo();
     return (
       <div className="MainContainer">
+        {/* <Clock /> */}
+        <Tab items={tabjson} />
+        <br />
+        <br />
+        <br />
         <Form onSubmit={this.formSabmitHandler} />
         <br />
         <br /> <br />
@@ -128,6 +161,26 @@ class App extends Component {
           onToggleCompleted={this.toggleCompleted}
         />
         {/* ----------------------------------------------- */}
+        <br />
+        <br />
+        <br />
+        <button type="button" onClick={this.toggleModal}>
+          Open modal
+        </button>
+        {showModal && (
+          <Modal closeModal={this.toggleModal}>
+            <h1>Hall0</h1>
+            <p>
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maxime
+              ab illum dolorem libero, quisquam a accusantium laudantium autem
+              sit debitis optio, necessitatibus, mollitia voluptas quidem. Est,
+              dolore impedit! Aut, eum?
+            </p>
+            <button type="button" onClick={this.toggleModal}>
+              Close modal
+            </button>
+          </Modal>
+        )}
       </div>
     );
   }
